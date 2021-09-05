@@ -123,7 +123,7 @@ def main():
 
         print "  Evaluated %i individuals" % len(invalid_ind)
 
-        population = toolbox.select(population+offspring, len(offspring))
+        population = toolbox.select(population + offspring, len(offspring))
         hof.update(population)
         stats.update(population)
 

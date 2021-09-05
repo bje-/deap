@@ -64,7 +64,7 @@ def main(seed):
 
     NGEN = 50
 
-    #Initialize the PBIL EDA
+    # Initialize the PBIL EDA
     pbil = PBIL(ndim=50, learning_rate=0.3, mut_prob=0.1, 
                 mut_shift=0.05, lambda_=20)
 

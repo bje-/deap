@@ -65,12 +65,12 @@ def main():
 
     for g in range(1, NGEN):
         for k, agent in enumerate(pop):
-            a,b,c = toolbox.select(pop)
+            a, b, c = toolbox.select(pop)
             y = toolbox.clone(agent)
             index = random.randrange(NDIM)
             for i, value in enumerate(agent):
                 if i == index or random.random() < CR:
-                    y[i] = a[i] + F*(b[i]-c[i])
+                    y[i] = a[i] + F * (b[i] - c[i])
             y.fitness.values = toolbox.evaluate(y)
             if y.fitness > agent.fitness:
                 pop[k] = y

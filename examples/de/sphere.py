@@ -35,7 +35,7 @@ creator.create("Individual", array.array, typecode='d', fitness=creator.FitnessM
 def mutDE(y, a, b, c, f):
     size = len(y)
     for i in range(len(y)):
-        y[i] = a[i] + f*(b[i]-c[i])
+        y[i] = a[i] + f * (b[i] - c[i])
     return y
 
 def cxBinomial(x, y, cr):

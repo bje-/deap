@@ -21,8 +21,8 @@ class Pickling(unittest.TestCase):
     def setUp(self):
         creator.create("FitnessMax", base.Fitness, weights=(1.0,))
         creator.create("IndList", list, fitness=creator.FitnessMax)
-        creator.create("IndArray", array.array,  typecode='f', fitness=creator.FitnessMax)
-        creator.create("IndNDArray", numpy.ndarray,  typecode='f', fitness=creator.FitnessMax)
+        creator.create("IndArray", array.array, typecode='f', fitness=creator.FitnessMax)
+        creator.create("IndNDArray", numpy.ndarray, typecode='f', fitness=creator.FitnessMax)
         creator.create("IndTree", gp.PrimitiveTree, fitness=creator.FitnessMax)
         self.toolbox = base.Toolbox()
         self.toolbox.register("func", func)
@@ -76,9 +76,9 @@ class Pickling(unittest.TestCase):
         ind.fitness.values = (1.0,)
         ind_s = pickle.dumps(ind, pickle.HIGHEST_PROTOCOL)
         ind_l = pickle.loads(ind_s)
-        msg =  "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
+        msg = "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
         self.assertEqual(ind, ind_l, msg)
-        msg =  "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
+        msg = "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
         self.assertEqual(ind.fitness, ind_l.fitness, msg)
 
     def test_pickle_tree_term(self):
@@ -91,9 +91,9 @@ class Pickling(unittest.TestCase):
         ind.fitness.values = (1.0,)
         ind_s = pickle.dumps(ind, pickle.HIGHEST_PROTOCOL)
         ind_l = pickle.loads(ind_s)
-        msg =  "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
+        msg = "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
         self.assertEqual(ind, ind_l, msg)
-        msg =  "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
+        msg = "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
         self.assertEqual(ind.fitness, ind_l.fitness, msg)
 
     def test_pickle_tree_ephemeral(self):
@@ -106,17 +106,17 @@ class Pickling(unittest.TestCase):
         ind.fitness.values = (1.0,)
         ind_s = pickle.dumps(ind, pickle.HIGHEST_PROTOCOL)
         ind_l = pickle.loads(ind_s)
-        msg =  "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
+        msg = "Unpickled individual %s != pickled individual %s" % (str(ind), str(ind_l))
         self.assertEqual(ind, ind_l, msg)
-        msg =  "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
+        msg = "Unpickled fitness %s != pickled fitness %s" % (str(ind.fitness), str(ind_l.fitness))
         self.assertEqual(ind.fitness, ind_l.fitness, msg)
 
     def test_pickle_population(self):
-        ind1 = creator.IndList([1.0,2.0,3.0])
+        ind1 = creator.IndList([1.0, 2.0, 3.0])
         ind1.fitness.values = (1.0,)
-        ind2 = creator.IndList([4.0,5.0,6.0])
+        ind2 = creator.IndList([4.0, 5.0, 6.0])
         ind2.fitness.values = (2.0,)
-        ind3 = creator.IndList([7.0,8.0,9.0])
+        ind3 = creator.IndList([7.0, 8.0, 9.0])
         ind3.fitness.values = (3.0,)
 
         pop = [ind1, ind2, ind3]
@@ -138,7 +138,7 @@ class Pickling(unittest.TestCase):
         logbook = tools.Logbook()
 
         stats.register("mean", numpy.mean)
-        record = stats.compile([1,2,3,4,5,6,8,9,10])
+        record = stats.compile([1, 2, 3, 4, 5, 6, 8, 9, 10])
         logbook.record(**record)
 
         logbook_s = pickle.dumps(logbook)

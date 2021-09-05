@@ -36,7 +36,7 @@ SPECIES_SIZE = coop_base.SPECIES_SIZE
 TARGET_SIZE = 30
 NUM_SPECIES = 1
 
-noise =      "*##*###*###*****##*##****#*##*###*#****##******##*#**#*#**######"
+noise = "*##*###*###*****##*##****#*##*###*#****##******##*#**#*#**######"
 schematas = ("1##1###1###11111##1##1111#1##1###1#1111##111111##1#11#1#11######",
              "1##1###1###11111##1##1000#0##0###0#0000##000000##0#00#0#00######",
              "0##0###0###00000##0##0000#0##0###0#0000##001111##1#11#1#11######")
@@ -63,7 +63,7 @@ def main(extended=True, verbose=True):
     add_next = [adapt_length]
 
     for i in range(len(schematas)):
-        target_set.extend(toolbox.target_set(schematas[i], int(TARGET_SIZE/len(schematas))))
+        target_set.extend(toolbox.target_set(schematas[i], int(TARGET_SIZE / len(schematas))))
 
     species = [toolbox.species() for _ in range(NUM_SPECIES)]
 
@@ -81,7 +81,7 @@ def main(extended=True, verbose=True):
             # Vary the species individuals
             s = algorithms.varAnd(s, toolbox, 0.6, 1.0)
 
-            r = representatives[:i] + representatives[i+1:]
+            r = representatives[:i] + representatives[i + 1:]
             for ind in s:
                 ind.fitness.values = toolbox.evaluate([ind] + r, target_set)
 

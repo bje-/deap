@@ -18,7 +18,7 @@ toolbox.register("individual", tools.initRepeat, creator.Individual,
 ind1 = toolbox.individual()
 
 print ind1               # [0.86..., 0.27..., 0.70..., 0.03..., 0.87...]
-print ind1.fitness.valid # False
+print ind1.fitness.valid  # False
 
 ## 3.2 Evaluation
 def evaluate(individual):
@@ -47,11 +47,11 @@ del child2.fitness.values
 
 ## 3.5 Selection
 selected = tools.selBest([child1, child2], 2)
-print child1 in selected	# True
+print child1 in selected  # True
 
 ## 3.5 Note
 LAMBDA = 10
 toolbox.register("select", tools.selRandom)
-population = [ind1, ind2]*10
+population = [ind1, ind2] * 10
 selected = toolbox.select(population, LAMBDA)
 offspring = [toolbox.clone(ind) for ind in selected]

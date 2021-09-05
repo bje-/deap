@@ -48,10 +48,10 @@ def protectedDiv(left, right):
     try: return left / right
     except ZeroDivisionError: return 1
 
-pset.addPrimitive(operator.add, [float,float], float)
-pset.addPrimitive(operator.sub, [float,float], float)
-pset.addPrimitive(operator.mul, [float,float], float)
-pset.addPrimitive(protectedDiv, [float,float], float)
+pset.addPrimitive(operator.add, [float, float], float)
+pset.addPrimitive(operator.sub, [float, float], float)
+pset.addPrimitive(operator.mul, [float, float], float)
+pset.addPrimitive(protectedDiv, [float, float], float)
 
 # logic operators
 # Define a new if-then-else function

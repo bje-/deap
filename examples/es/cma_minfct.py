@@ -23,7 +23,7 @@ from deap import creator
 from deap import tools
 
 # Problem size
-N=30
+N = 30
 
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMin)
@@ -38,7 +38,7 @@ def main():
     # The CMA-ES algorithm takes a population of one individual as argument
     # The centroid is set to a vector of 5.0 see http://www.lri.fr/~hansen/cmaes_inmatlab.html
     # for more details about the rastrigin and other tests for CMA-ES    
-    strategy = cma.Strategy(centroid=[5.0]*N, sigma=5.0, lambda_=20*N)
+    strategy = cma.Strategy(centroid=[5.0] * N, sigma=5.0, lambda_=20 * N)
     toolbox.register("generate", strategy.generate, creator.Individual)
     toolbox.register("update", strategy.update)
 
@@ -48,7 +48,7 @@ def main():
     stats.register("std", numpy.std)
     stats.register("min", numpy.min)
     stats.register("max", numpy.max)
-    #logger = tools.EvolutionLogger(stats.functions.keys())
+    # logger = tools.EvolutionLogger(stats.functions.keys())
 
     # The CMA-ES algorithm converge with good probability with those settings
     algorithms.eaGenerateUpdate(toolbox, ngen=250, stats=stats, halloffame=hof)

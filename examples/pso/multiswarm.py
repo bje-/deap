@@ -62,15 +62,15 @@ def convertQuantum(swarm, rcloud, centre, dist):
         dist = math.sqrt(sum(x**2 for x in position))
 
         if dist == "gaussian":
-            u = abs(random.gauss(0, 1.0/3.0))
-            part[:] = [(rcloud * x * u**(1.0/dim) / dist) + c for x, c in zip(position, centre)]
+            u = abs(random.gauss(0, 1.0 / 3.0))
+            part[:] = [(rcloud * x * u**(1.0 / dim) / dist) + c for x, c in zip(position, centre)]
 
         elif dist == "uvd":
             u = random.random()
-            part[:] = [(rcloud * x * u**(1.0/dim) / dist) + c for x, c in zip(position, centre)]
+            part[:] = [(rcloud * x * u**(1.0 / dim) / dist) + c for x, c in zip(position, centre)]
 
         elif dist == "nuvd":
-            u = abs(random.gauss(0, 1.0/3.0))
+            u = abs(random.gauss(0, 1.0 / 3.0))
             part[:] = [(rcloud * x * u / dist) + c for x, c in zip(position, centre)]
 
         del part.fitness.values
@@ -96,8 +96,8 @@ def updateParticle(part, best, chi, c):
 
 toolbox = base.Toolbox()
 toolbox.register("particle", generate, creator.Particle, dim=NDIM,
-    pmin=BOUNDS[0], pmax=BOUNDS[1], smin=-(BOUNDS[1] - BOUNDS[0])/2.0,
-    smax=(BOUNDS[1] - BOUNDS[0])/2.0)
+    pmin=BOUNDS[0], pmax=BOUNDS[1], smin=-(BOUNDS[1] - BOUNDS[0]) / 2.0,
+    smax=(BOUNDS[1] - BOUNDS[0]) / 2.0)
 toolbox.register("swarm", tools.initRepeat, creator.Swarm, toolbox.particle)
 toolbox.register("update", updateParticle, chi=0.729843788, c=2.05)
 toolbox.register("convert", convertQuantum, dist="nuvd")
@@ -144,7 +144,7 @@ def main(verbose=True):
     generation = 1
     while mpb.nevals < 5e5:
         # Check for convergence
-        rexcl = (BOUNDS[1] - BOUNDS[0]) / (2 * len(population)**(1.0/NDIM))
+        rexcl = (BOUNDS[1] - BOUNDS[0]) / (2 * len(population)**(1.0 / NDIM))
 
         not_converged = 0
         worst_swarm_idx = None
@@ -153,7 +153,7 @@ def main(verbose=True):
             # Compute the diameter of the swarm
             for p1, p2 in itertools.combinations(swarm, 2):
                 d = math.sqrt(sum((x1 - x2)**2. for x1, x2 in zip(p1, p2)))
-                if d > 2*rexcl:
+                if d > 2 * rexcl:
                     not_converged += 1
                     # Search for the worst swarm according to its global best
                     if not worst_swarm or swarm.bestfit < worst_swarm.bestfit:

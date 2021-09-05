@@ -64,16 +64,16 @@ def progn(*args):
         arg()
 
 def prog2(out1, out2): 
-    return partial(progn,out1,out2)
+    return partial(progn, out1, out2)
 
 def prog3(out1, out2, out3):     
-    return partial(progn,out1,out2,out3)
+    return partial(progn, out1, out2, out3)
 
 def if_then_else(condition, out1, out2):
     out1() if condition() else out2()
 
 class AntSimulator(object):
-    direction = ["north","east","south","west"]
+    direction = ["north", "east", "south", "west"]
     dir_row = [1, 0, -1, 0]
     dir_col = [0, 1, 0, -1]
 
@@ -122,7 +122,7 @@ class AntSimulator(object):
     def if_food_ahead(self, out1, out2):
         return partial(if_then_else, self.sense_food, out1, out2)
 
-    def run(self,routine):
+    def run(self, routine):
         self._reset()
         while self.moves < self.max_moves:
             routine()
@@ -183,7 +183,7 @@ toolbox.register("mutate", gp.mutUniform, expr=toolbox.expr_mut, pset=pset)
 def main():
     random.seed(69)
 
-    with  open("ant/santafe_trail.txt") as trail_file:
+    with open("ant/santafe_trail.txt") as trail_file:
       ant.parse_matrix(trail_file)
 
     pop = toolbox.population(n=300)

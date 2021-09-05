@@ -41,7 +41,7 @@ def main(verbose=True):
     # The CMA-ES algorithm takes a population of one individual as argument
     # The centroid is set to a vector of 5.0 see http://www.lri.fr/~hansen/cmaes_inmatlab.html
     # for more details about the rastrigin and other tests for CMA-ES    
-    strategy = cma.Strategy(centroid=[5.0]*N, sigma=5.0, lambda_=20*N)
+    strategy = cma.Strategy(centroid=[5.0] * N, sigma=5.0, lambda_=20 * N)
     toolbox.register("generate", strategy.generate, creator.Individual)
     toolbox.register("update", strategy.update)
 
@@ -56,12 +56,12 @@ def main(verbose=True):
     logbook.header = "gen", "evals", "std", "min", "avg", "max"
 
     # Objects that will compile the data
-    sigma = numpy.ndarray((NGEN,1))
-    axis_ratio = numpy.ndarray((NGEN,1))
-    diagD = numpy.ndarray((NGEN,N))
-    fbest = numpy.ndarray((NGEN,1))
-    best = numpy.ndarray((NGEN,N))
-    std = numpy.ndarray((NGEN,N))
+    sigma = numpy.ndarray((NGEN, 1))
+    axis_ratio = numpy.ndarray((NGEN, 1))
+    diagD = numpy.ndarray((NGEN, N))
+    fbest = numpy.ndarray((NGEN, 1))
+    best = numpy.ndarray((NGEN, N))
+    std = numpy.ndarray((NGEN, N))
 
     for gen in range(NGEN):
         # Generate a new population
@@ -86,7 +86,7 @@ def main(verbose=True):
         # Save more data along the evolution for latter plotting
         # diagD is sorted and sqrooted in the update method
         sigma[gen] = strategy.sigma
-        axis_ratio[gen] = max(strategy.diagD)**2/min(strategy.diagD)**2
+        axis_ratio[gen] = max(strategy.diagD)**2 / min(strategy.diagD)**2
         diagD[gen, :N] = strategy.diagD**2
         fbest[gen] = halloffame[0].fitness.values
         best[gen, :N] = halloffame[0]

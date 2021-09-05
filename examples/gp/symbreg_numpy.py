@@ -27,7 +27,7 @@ from deap import gp
 
 # Define new functions
 def protectedDiv(left, right):
-    with numpy.errstate(divide='ignore',invalid='ignore'):
+    with numpy.errstate(divide='ignore', invalid='ignore'):
         x = numpy.divide(left, right)
         if isinstance(x, numpy.ndarray):
             x[numpy.isinf(x)] = 1
@@ -44,7 +44,7 @@ pset.addPrimitive(protectedDiv, 2)
 pset.addPrimitive(numpy.negative, 1, name="vneg")
 pset.addPrimitive(numpy.cos, 1, name="vcos")
 pset.addPrimitive(numpy.sin, 1, name="vsin")
-pset.addEphemeralConstant("rand101", lambda: random.randint(-1,1))
+pset.addEphemeralConstant("rand101", lambda: random.randint(-1, 1))
 pset.renameArguments(ARG0='x')
 
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))

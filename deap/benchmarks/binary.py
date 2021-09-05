@@ -27,14 +27,14 @@ def bin2float(min_, max_, nbits):
         @wraps(function)
         def wrapped_function(individual, *args, **kargs):
             # User must take care to make nelem an integer.
-            nelem = len(individual)//nbits
+            nelem = len(individual) // nbits
             decoded = [0] * nelem
             for i in xrange(nelem):
                 gene = int("".join(map(str,
-                                       individual[i*nbits:i*nbits+nbits])),
+                                       individual[i * nbits:i * nbits + nbits])),
                            2)
                 div = 2**nbits - 1
-                temp = gene/div
+                temp = gene / div
                 decoded[i] = min_ + (temp * (max_ - min_))
             return function(decoded, *args, **kargs)
         return wrapped_function
@@ -68,11 +68,11 @@ def chuang_f1(individual):
     """
     total = 0
     if individual[-1] == 0:
-        for i in xrange(0, len(individual)-1, 4):
-            total += inv_trap(individual[i:i+4])
+        for i in xrange(0, len(individual) - 1, 4):
+            total += inv_trap(individual[i:i + 4])
     else:
-        for i in xrange(0, len(individual)-1, 4):
-            total += trap(individual[i:i+4])
+        for i in xrange(0, len(individual) - 1, 4):
+            total += trap(individual[i:i + 4])
     return total,
 
 
@@ -85,17 +85,17 @@ def chuang_f2(individual):
     """
     total = 0
     if individual[-2] == 0 and individual[-1] == 0:
-        for i in xrange(0, len(individual)-2, 8):
-            total += inv_trap(individual[i:i+4]) + inv_trap(individual[i+4:i+8])
+        for i in xrange(0, len(individual) - 2, 8):
+            total += inv_trap(individual[i:i + 4]) + inv_trap(individual[i + 4:i + 8])
     elif individual[-2] == 0 and individual[-1] == 1:
-        for i in xrange(0, len(individual)-2, 8):
-            total += inv_trap(individual[i:i+4]) + trap(individual[i+4:i+8])
+        for i in xrange(0, len(individual) - 2, 8):
+            total += inv_trap(individual[i:i + 4]) + trap(individual[i + 4:i + 8])
     elif individual[-2] == 1 and individual[-1] == 0:
-        for i in xrange(0, len(individual)-2, 8):
-            total += trap(individual[i:i+4]) + inv_trap(individual[i+4:i+8])
+        for i in xrange(0, len(individual) - 2, 8):
+            total += trap(individual[i:i + 4]) + inv_trap(individual[i + 4:i + 8])
     else:
-        for i in xrange(0, len(individual)-2, 8):
-            total += trap(individual[i:i+4]) + trap(individual[i+4:i+8])
+        for i in xrange(0, len(individual) - 2, 8):
+            total += trap(individual[i:i + 4]) + trap(individual[i + 4:i + 8])
     return total,
 
 
@@ -108,12 +108,12 @@ def chuang_f3(individual):
     """
     total = 0
     if individual[-1] == 0:
-        for i in xrange(0, len(individual)-1, 4):
-            total += inv_trap(individual[i:i+4])
+        for i in xrange(0, len(individual) - 1, 4):
+            total += inv_trap(individual[i:i + 4])
     else:
-        for i in xrange(2, len(individual)-3, 4):
-            total += inv_trap(individual[i:i+4])
-        total += trap(individual[-2:]+individual[:2])
+        for i in xrange(2, len(individual) - 3, 4):
+            total += inv_trap(individual[i:i + 4])
+        total += trap(individual[-2:] + individual[:2])
     return total,
 
 
@@ -126,8 +126,8 @@ def royal_road1(individual, order):
     max_value = int(2**order - 1)
     total = 0
     for i in xrange(nelem):
-        value = int("".join(map(str, individual[i*order:i*order+order])), 2)
-        total += int(order) * int(value/max_value)
+        value = int("".join(map(str, individual[i * order:i * order + order])), 2)
+        total += int(order) * int(value / max_value)
     return total,
 
 

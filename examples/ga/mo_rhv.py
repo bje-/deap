@@ -74,7 +74,7 @@ def hypervolume_contrib(front, **kargs):
     def contribution(i):
         # The contribution of point p_i in point set P
         # is the hypervolume of P without p_i
-        return total_hv - hv.hypervolume(numpy.concatenate((wobj[:i], wobj[i+1:])), ref)
+        return total_hv - hv.hypervolume(numpy.concatenate((wobj[:i], wobj[i + 1:])), ref)
 
     # Parallelization note: Cannot pickle local function
     return map(contribution, range(len(front)))
@@ -86,7 +86,7 @@ toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 toolbox.register("evaluate", benchmarks.zdt1)
 toolbox.register("mate", tools.cxSimulatedBinaryBounded, low=BOUND_LOW, up=BOUND_UP, eta=20.0)
-toolbox.register("mutate", tools.mutPolynomialBounded, low=BOUND_LOW, up=BOUND_UP, eta=20.0, indpb=1.0/NDIM)
+toolbox.register("mutate", tools.mutPolynomialBounded, low=BOUND_LOW, up=BOUND_UP, eta=20.0, indpb=1.0 / NDIM)
 toolbox.register("sort", tools.sortLogNondominated)
 # Selection is based on HV fitness
 toolbox.register("select", tools.selBest, fit_attr="fitness_hv")

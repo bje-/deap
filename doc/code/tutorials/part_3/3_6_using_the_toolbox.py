@@ -24,7 +24,7 @@ toolbox.register("individual", tools.initRepeat, creator.Individual, toolbox.att
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
 pop = toolbox.population(n=100)
-CXPB, MUTPB, NGEN= 0.7, 0.3, 25
+CXPB, MUTPB, NGEN = 0.7, 0.3, 25
 
 ## 3.6.1 Using the Tools
 for g in range(NGEN):

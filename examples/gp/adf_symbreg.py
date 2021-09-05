@@ -103,8 +103,8 @@ def evalSymbReg(individual):
     func = toolbox.compile(individual)
     # Evaluate the sum of squared difference between the expression
     # and the real function : x**4 + x**3 + x**2 + x
-    values = (x/10. for x in range(-10, 10))
-    diff_func = lambda x: (func(x)-(x**4 + x**3 + x**2 + x))**2
+    values = (x / 10. for x in range(-10, 10))
+    diff_func = lambda x: (func(x) - (x**4 + x**3 + x**2 + x))**2
     diff = sum(map(diff_func, values))
     return diff,
 

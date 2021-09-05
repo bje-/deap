@@ -152,7 +152,7 @@ class _HyperVolume:
                 hvol = qPrevDimIndex.volume[dimIndex] + qPrevDimIndex.area[dimIndex] * (qCargo[dimIndex] - qPrevDimIndex.cargo[dimIndex])
             else:
                 qArea[0] = 1
-                qArea[1:dimIndex+1] = [qArea[i] * -qCargo[i] for i in xrange(dimIndex)]
+                qArea[1:dimIndex + 1] = [qArea[i] * -qCargo[i] for i in xrange(dimIndex)]
             q.volume[dimIndex] = hvol
             if q.ignore >= dimIndex:
                 qArea[dimIndex] = qPrevDimIndex.area[dimIndex]
@@ -213,7 +213,7 @@ class _MultiList:
 
         def __init__(self, numberLists, cargo=None): 
             self.cargo = cargo 
-            self.next  = [None] * numberLists
+            self.next = [None] * numberLists
             self.prev = [None] * numberLists
             self.ignore = 0
             self.area = [0.0] * numberLists

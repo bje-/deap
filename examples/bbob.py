@@ -58,8 +58,8 @@ def main(func, dim, maxfuncevals, ftarget=None):
 
     # Interval in which to initialize the optimizer
     interval = -5, 5
-    sigma = (interval[1] - interval[0])/2.0
-    alpha = 2.0**(1.0/dim)
+    sigma = (interval[1] - interval[0]) / 2.0
+    alpha = 2.0**(1.0 / dim)
 
     # Initialize best randomly and worst as a place holder
     best = creator.Individual(random.uniform(interval[0], interval[1]) for _ in range(dim))

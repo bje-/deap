@@ -290,7 +290,7 @@ class MovingPeaks:
             shift_length = sum(s**2 for s in shift)
             shift_length = self.move_severity / math.sqrt(shift_length) if shift_length > 0 else 0
 
-            shift = [s*shift_length for s in shift]
+            shift = [s * shift_length for s in shift]
 
             new_position = []
             final_shift = []
@@ -331,8 +331,8 @@ class MovingPeaks:
 
         self._optimum = None
 
-SCENARIO_1 = {"pfunc" : function1,
-              "npeaks" : 5,
+SCENARIO_1 = {"pfunc": function1,
+              "npeaks": 5,
               "bfunc": None,
               "min_coord": 0.0,
               "max_coord": 100.0,
@@ -348,9 +348,9 @@ SCENARIO_1 = {"pfunc" : function1,
               "width_severity": 0.01,
               "period": 5000}
 
-SCENARIO_2 = {"pfunc" : cone,
-              "npeaks" : 10,
-              "bfunc" : None,
+SCENARIO_2 = {"pfunc": cone,
+              "npeaks": 10,
+              "bfunc": None,
               "min_coord": 0.0,
               "max_coord": 100.0,
               "min_height": 30.0,
@@ -365,9 +365,9 @@ SCENARIO_2 = {"pfunc" : cone,
               "width_severity": 1.0,
               "period": 5000}
 
-SCENARIO_3 = {"pfunc" : cone,
-              "npeaks" : 50,
-              "bfunc" : lambda x: 10,
+SCENARIO_3 = {"pfunc": cone,
+              "npeaks": 50,
+              "bfunc": lambda x: 10,
               "min_coord": 0.0,
               "max_coord": 100.0,
               "min_height": 30.0,
@@ -392,7 +392,7 @@ def diversity(population):
     return math.sqrt(sum((di - xi)**2 for x in population for di, xi in zip(d, x)))
 
 if __name__ == "__main__":
-    mpb = MovingPeaks(dim=2, npeaks=[1,1,10], number_severity=0.1)
+    mpb = MovingPeaks(dim=2, npeaks=[1, 1, 10], number_severity=0.1)
     print mpb.maximums()
     mpb.changePeaks()
     print mpb.maximums()

@@ -48,9 +48,9 @@ toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 def evalOneMax(individual):
     return sum(individual),
 
-#----------
+# ----------
 # Operator registration
-#----------
+# ----------
 # register the goal / fitness function
 toolbox.register("evaluate", evalOneMax)
 
@@ -67,7 +67,7 @@ toolbox.register("mutate", tools.mutFlipBit, indpb=0.05)
 # drawn randomly from the current generation.
 toolbox.register("select", tools.selTournament, tournsize=3)
 
-#----------
+# ----------
 
 def main():
     random.seed(64)
@@ -143,7 +143,7 @@ def main():
 
         length = len(pop)
         mean = sum(fits) / length
-        sum2 = sum(x*x for x in fits)
+        sum2 = sum(x * x for x in fits)
         std = abs(sum2 / length - mean**2)**0.5
 
         print("  Min %s" % min(fits))

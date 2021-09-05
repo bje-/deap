@@ -29,7 +29,7 @@ creator.create("Individual", array.array, typecode='d', fitness=creator.FitnessM
 
 def update(ind, mu, std):
     for i, mu_i in enumerate(mu):
-        ind[i] = random.gauss(mu_i,std)
+        ind[i] = random.gauss(mu_i, std)
 
 toolbox = base.Toolbox()                  
 toolbox.register("update", update)
@@ -52,14 +52,14 @@ def main():
     logbook = tools.Logbook()
     logbook.header = "gen", "fitness"
 
-    interval = (-3,7)
+    interval = (-3, 7)
     mu = (random.uniform(interval[0], interval[1]) for _ in range(IND_SIZE))
-    sigma = (interval[1] - interval[0])/2.0
-    alpha = 2.0**(1.0/IND_SIZE)
+    sigma = (interval[1] - interval[0]) / 2.0
+    alpha = 2.0**(1.0 / IND_SIZE)
 
     best = creator.Individual(mu)
     best.fitness.values = toolbox.evaluate(best)
-    worst = creator.Individual((0.0,)*IND_SIZE)
+    worst = creator.Individual((0.0,) * IND_SIZE)
 
     NGEN = 1500
     for g in range(NGEN):

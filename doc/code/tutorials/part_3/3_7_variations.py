@@ -24,7 +24,7 @@ toolbox.register("select", tools.selTournament, tournsize=3)
 toolbox.register("evaluate", onemax)
 
 pop = toolbox.population(n=100)
-CXPB, MUTPB, NGEN= 0.7, 0.3, 25
+CXPB, MUTPB, NGEN = 0.7, 0.3, 25
 
 fitnesses = toolbox.map(toolbox.evaluate, pop)
 for ind, fit in zip(pop, fitnesses):

@@ -126,7 +126,7 @@ def main():
         for ind, fit in zip(invalid_ind, fitnesses):
             ind.fitness.values = fit
 
-        population = toolbox.select(population+offspring, len(offspring))
+        population = toolbox.select(population + offspring, len(offspring))
         hof.update(population)
         record = stats.compile(population)
         logbook.record(gen=g, evals=len(invalid_ind), **record)

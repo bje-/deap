@@ -92,7 +92,7 @@ def main(verbose=True):
                 del individual.fitness.values
 
         # Apply exclusion
-        rexcl = (BOUNDS[1] - BOUNDS[0]) / (2 * NPOP**(1.0/NDIM))
+        rexcl = (BOUNDS[1] - BOUNDS[0]) / (2 * NPOP**(1.0 / NDIM))
         for i, j in itertools.combinations(range(NPOP), 2):
             if bests[i].fitness.valid and bests[j].fitness.valid:
                 d = sum((bests[i][k] - bests[j][k])**2 for k in range(NDIM))

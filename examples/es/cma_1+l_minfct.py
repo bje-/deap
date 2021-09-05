@@ -22,7 +22,7 @@ from deap import cma
 from deap import creator
 from deap import tools
 
-N=5
+N = 5
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMin)
 

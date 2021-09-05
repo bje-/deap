@@ -105,9 +105,9 @@ def main(verbose=True):
         logbooks.append(tools.Logbook())
         logbooks[-1].header = "gen", "evals", "restart", "regime", "std", "min", "avg", "max"
 
-        conditions = {"MaxIter" : False, "TolHistFun" : False, "EqualFunVals" : False,
-                      "TolX" : False, "TolUpSigma" : False, "Stagnation" : False,
-                      "ConditionCov" : False, "NoEffectAxis" : False, "NoEffectCoor" : False}
+        conditions = {"MaxIter": False, "TolHistFun": False, "EqualFunVals": False,
+                      "TolX": False, "TolUpSigma": False, "Stagnation": False,
+                      "ConditionCov": False, "NoEffectAxis": False, "NoEffectCoor": False}
 
         # Run the current regime until one of the following is true:
         ## Note that the algorithm won't stop by itself on the optimum (0.0 on rastrigin).
@@ -136,7 +136,7 @@ def main(verbose=True):
 
             # Log the best and median value of this population
             bestvalues.append(population[-1].fitness.values)
-            medianvalues.append(population[int(round(len(population)/2.))].fitness.values)
+            medianvalues.append(population[int(round(len(population) / 2.))].fitness.values)
 
             # First run does not count into the budget
             if regime == 1 and i > 0:

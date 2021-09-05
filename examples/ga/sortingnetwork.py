@@ -25,7 +25,7 @@ class SortingNetwork(list):
     values by outputting the smaller value to one wire, and a larger
     value to the other.
     """
-    def __init__(self, dimension, connectors = []):
+    def __init__(self, dimension, connectors=[]):
         self.dimension = dimension
         for wire1, wire2 in connectors:
             self.addConnector(wire1, wire2)
@@ -72,7 +72,7 @@ class SortingNetwork(list):
             cases = product((0, 1), repeat=self.dimension)
 
         misses = 0
-        ordered = [[0]*(self.dimension-i) + [1]*i for i in range(self.dimension+1)]
+        ordered = [[0] * (self.dimension - i) + [1] * i for i in range(self.dimension + 1)]
         for sequence in cases:
             sequence = list(sequence)
             self.sort(sequence)
@@ -81,25 +81,25 @@ class SortingNetwork(list):
 
     def draw(self):
         """Return an ASCII representation of the network."""
-        str_wires = [["-"]*7 * self.depth]
+        str_wires = [["-"] * 7 * self.depth]
         str_wires[0][0] = "0"
         str_wires[0][1] = " o"
         str_spaces = []
 
         for i in range(1, self.dimension):
-            str_wires.append(["-"]*7 * self.depth)
-            str_spaces.append([" "]*7 * self.depth)
+            str_wires.append(["-"] * 7 * self.depth)
+            str_spaces.append([" "] * 7 * self.depth)
             str_wires[i][0] = str(i)
             str_wires[i][1] = " o"
 
         for index, level in enumerate(self):
             for wire1, wire2 in level:
-                str_wires[wire1][(index+1)*6] = "x"
-                str_wires[wire2][(index+1)*6] = "x"
+                str_wires[wire1][(index + 1) * 6] = "x"
+                str_wires[wire2][(index + 1) * 6] = "x"
                 for i in range(wire1, wire2):
-                    str_spaces[i][(index+1)*6+1] = "|"
-                for i in range(wire1+1, wire2):
-                    str_wires[i][(index+1)*6] = "|"
+                    str_spaces[i][(index + 1) * 6 + 1] = "|"
+                for i in range(wire1 + 1, wire2):
+                    str_wires[i][(index + 1) * 6] = "|"
 
         network_draw = "".join(str_wires[0])
         for line, space in zip(str_wires[1:], str_spaces):

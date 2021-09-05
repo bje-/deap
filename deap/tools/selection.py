@@ -198,7 +198,7 @@ def selStochasticUniversalSampling(individuals, k, fit_attr="fitness"):
 
     distance = sum_fits / float(k)
     start = random.uniform(0, distance)
-    points = [start + i*distance for i in xrange(k)]
+    points = [start + i * distance for i in xrange(k)]
 
     chosen = []
     for p in points:
@@ -269,7 +269,7 @@ def selEpsilonLexicase(individuals, k, epsilon):
                 best_val_for_case = max(map(lambda x: x.fitness.values[cases[0]], candidates))
                 min_val_to_survive_case = best_val_for_case - epsilon
                 candidates = list(filter(lambda x: x.fitness.values[cases[0]] >= min_val_to_survive_case, candidates))
-            else :
+            else:
                 best_val_for_case = min(map(lambda x: x.fitness.values[cases[0]], candidates))
                 max_val_to_survive_case = best_val_for_case + epsilon
                 candidates = list(filter(lambda x: x.fitness.values[cases[0]] <= max_val_to_survive_case, candidates))
@@ -308,7 +308,7 @@ def selAutomaticEpsilonLexicase(individuals, k):
                 best_val_for_case = max(errors_for_this_case)
                 min_val_to_survive = best_val_for_case - median_absolute_deviation
                 candidates = list(filter(lambda x: x.fitness.values[cases[0]] >= min_val_to_survive, candidates))
-            else :
+            else:
                 best_val_for_case = min(errors_for_this_case)
                 max_val_to_survive = best_val_for_case + median_absolute_deviation
                 candidates = list(filter(lambda x: x.fitness.values[cases[0]] <= max_val_to_survive, candidates))

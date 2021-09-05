@@ -8,7 +8,7 @@ from deap import tools
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
 creator.create("Individual", list, fitness=creator.FitnessMin)
 
-IND_SIZE=10
+IND_SIZE = 10
 
 toolbox = base.Toolbox()
 toolbox.register("indices", random.sample, range(IND_SIZE), IND_SIZE)

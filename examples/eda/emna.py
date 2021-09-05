@@ -58,14 +58,14 @@ class EMNA(object):
         avg = numpy.mean(z, axis=0)
 
         # Adjust variance of the distribution
-        self.sigma = numpy.sqrt(numpy.sum(numpy.sum((z - avg)**2, axis=1)) / (self.mu*self.dim))
+        self.sigma = numpy.sqrt(numpy.sum(numpy.sum((z - avg)**2, axis=1)) / (self.mu * self.dim))
         self.centroid = self.centroid + avg
 
 
 def main():
     N, LAMBDA = 30, 1000
-    MU = int(LAMBDA/4)
-    strategy = EMNA(centroid=[5.0]*N, sigma=5.0, mu=MU, lambda_=LAMBDA)
+    MU = int(LAMBDA / 4)
+    strategy = EMNA(centroid=[5.0] * N, sigma=5.0, mu=MU, lambda_=LAMBDA)
 
     toolbox = base.Toolbox()
     toolbox.register("evaluate", benchmarks.sphere)

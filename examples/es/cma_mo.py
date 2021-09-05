@@ -57,7 +57,7 @@ def valid(individual):
 
 def close_valid(individual):
     """Determines if the individual is close to valid."""
-    if any(individual < MIN_BOUND-EPS_BOUND) or any(individual > MAX_BOUND+EPS_BOUND):
+    if any(individual < MIN_BOUND - EPS_BOUND) or any(individual > MAX_BOUND + EPS_BOUND):
         return False
     return True
 
@@ -145,16 +145,16 @@ def main():
 
         # Plot all history. Note the values include the penalty.
         fitness_history = numpy.asarray(fitness_history)
-        plt.scatter(fitness_history[:,0], fitness_history[:,1],
+        plt.scatter(fitness_history[:, 0], fitness_history[:, 1],
             facecolors='none', edgecolors="lightblue")
 
         valid_front = numpy.array([ind.fitness.values for ind in strategy.parents if close_valid(ind)])
         invalid_front = numpy.array([ind.fitness.values for ind in strategy.parents if not close_valid(ind)])
 
         if len(valid_front) > 0:
-            plt.scatter(valid_front[:,0], valid_front[:,1], c="g")
+            plt.scatter(valid_front[:, 0], valid_front[:, 1], c="g")
         if len(invalid_front) > 0:
-            plt.scatter(invalid_front[:,0], invalid_front[:,1], c="r")
+            plt.scatter(invalid_front[:, 0], invalid_front[:, 1], c="r")
 
         if interactive:
             plt.show()

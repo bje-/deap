@@ -38,8 +38,8 @@ def nicheSchematas(type, size):
     """Produce the desired schemata based on the type required, 2 for half
     length, 4 for quarter length and 8 for eight length.
     """
-    rept = int(size/type)
-    return ["#" * (i*rept) + "1" * rept + "#" * ((type-i-1)*rept) for i in range(type)]
+    rept = int(size / type)
+    return ["#" * (i * rept) + "1" * rept + "#" * ((type - i - 1) * rept) for i in range(type)]
 
 toolbox = coop_base.toolbox
 
@@ -61,7 +61,7 @@ def main(extended=True, verbose=True):
 
     schematas = nicheSchematas(TARGET_TYPE, IND_SIZE)
     for i in range(TARGET_TYPE):
-        size = int(TARGET_SIZE/TARGET_TYPE)
+        size = int(TARGET_SIZE / TARGET_TYPE)
         target_set.extend(toolbox.target_set(schematas[i], size))
         species.append(toolbox.species())
 
@@ -76,7 +76,7 @@ def main(extended=True, verbose=True):
             s = algorithms.varAnd(s, toolbox, 0.6, 1.0)
 
             # Get the representatives excluding the current species
-            r = representatives[:i] + representatives[i+1:]
+            r = representatives[:i] + representatives[i + 1:]
             for ind in s:
                 ind.fitness.values = toolbox.evaluate([ind] + r, target_set)
 

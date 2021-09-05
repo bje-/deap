@@ -38,7 +38,7 @@ def hypervolume(front, **kargs):
     def contribution(i):
         # The contribution of point p_i in point set P
         # is the hypervolume of P without p_i
-        return hv.hypervolume(numpy.concatenate((wobj[:i], wobj[i+1:])), ref)
+        return hv.hypervolume(numpy.concatenate((wobj[:i], wobj[i + 1:])), ref)
 
     # Parallelization note: Cannot pickle local function
     contrib_values = map(contribution, range(len(front)))

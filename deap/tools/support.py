@@ -445,7 +445,7 @@ class Logbook(list):
             str_line = []
             for j, name in enumerate(columns):
                 if name in chapters_txt:
-                    column = chapters_txt[name][i+offsets[name]]
+                    column = chapters_txt[name][i + offsets[name]]
                 else:
                     value = line.get(name, "")
                     string = "{0:n}" if isinstance(value, float) else "{0}"
@@ -467,9 +467,9 @@ class Logbook(list):
                     for i in xrange(blanks):
                         header[i].append(" " * length)
                     header[blanks].append(name.center(length))
-                    header[blanks+1].append("-" * length)
+                    header[blanks + 1].append("-" * length)
                     for i in xrange(offsets[name]):
-                        header[blanks+2+i].append(chapters_txt[name][i])
+                        header[blanks + 2 + i].append(chapters_txt[name][i])
                 else:
                     length = max(len(line[j].expandtabs()) for line in str_matrix)
                     for line in header[:-1]:
@@ -524,7 +524,7 @@ class HallOfFame(object):
                            update the hall of fame with.
         """
         for ind in population:
-            if len(self) == 0 and self.maxsize !=0:
+            if len(self) == 0 and self.maxsize != 0:
                 # Working on an empty hall of fame is problematic for the
                 # "for else"
                 self.insert(population[0])
